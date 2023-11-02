@@ -1,0 +1,60 @@
+<html>
+<head>
+    <style type="text/css">
+        img {
+            width: 200px;
+            height: 120px;
+            position:absolute;
+        }
+    </style>
+    <script type="text/javascript" src="jquery.js"></script>
+</head>
+<body>
+    <button id="startButton">Start</button>
+    <br>
+    <br>
+    <br>
+    <img id="slideshow" src="./images/jQuery/1.jpg">   
+    
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var images = ['./images/jQuery/1.jpg', 
+            './images/jQuery/2.jpg', 
+            './images/jQuery/3.png', 
+            './images/jQuery/4.jpg', 
+            './images/jQuery/5.jpg', 
+            './images/jQuery/6.png', 
+            './images/jQuery/7.jpg', 
+            './images/jQuery/8.png', 
+            './images/jQuery/9.jpg', 
+            './images/jQuery/10.jpg', 
+            './images/jQuery/11.png', 
+            './images/jQuery/12.png', 
+            './images/jQuery/13.jpg', 
+            './images/jQuery/14.png', 
+            './images/jQuery/15.jpg', 
+            './images/jQuery/16.png'];
+
+            var index = 1;
+
+            function changeImage() {
+                $('#slideshow').fadeOut(3000, function() {
+                    $(this).attr('src', images[index]);
+                    $(this).fadeIn(3000, function() {
+                        if (index == images.length-1) {
+                            index = 0;
+                        } else {
+                            index++;
+                        }
+                    });
+                });
+            }
+
+            $('#startButton').click(function() {
+                changeImage();
+                setInterval(changeImage, 6000);
+            });
+        });
+    </script>
+</body>
+</html>
